@@ -1,58 +1,41 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab6 C# ");
-AnyFunc();
+﻿using Lab6CSharp;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+class Program
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
-
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    public static void Main(string[]Args)
     {
-        public string Name { get; set; }
-        public UserClass()
-        {
-            Name = "NoName";
-        }
-        UserClass(string n)
-        {
-            Name = n;
-        }
-    }
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Detail d1 = new Detail();
+        Detail d2 = new Detail("test detail", 500);
+        Detail d3 = new Detail(d2);
+        d1.Show();
+        d2.Show();
+        d3.Show();
 
-}
-class UserClass
-{
-    public string Name { get; set; }
+        Mechanism m1 = new Mechanism();
+        Mechanism m2 = new Mechanism("test mechanism", 500, 5);
+        Mechanism m3 = new Mechanism(m2);
+        m1.Show();
+        m2.Show();
+        m3.Show();
+
+        Node n1 = new Node();
+        Node n2 = new Node("test node", 500, "newtype");
+        Node n3 = new Node(n2);
+        n1.Show();
+        n2.Show();
+        n3.Show();
+
+        Product p1 = new Product();
+        Product p2 = new Product("test product", 500, "iron");
+        Product p3 = new Product(p2);
+        p1.Show();
+        p2.Show();
+        p3.Show();
+
+
+        Console.WriteLine(d2.CompareTo(d1));
+        Console.WriteLine(d2.CompareTo(d3));
+        Console.WriteLine(d1.CompareTo(d2));
+    }
 }
