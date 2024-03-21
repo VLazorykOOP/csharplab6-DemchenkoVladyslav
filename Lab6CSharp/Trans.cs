@@ -18,5 +18,9 @@ namespace Lab6CSharp
         {
             return Capacity;
         }
+        public int CompareTo(int a)
+        {
+            return (a == this.Capacity) ? 0 : (a < this.Capacity) ? 1 : -1;
+        }
     }
 }

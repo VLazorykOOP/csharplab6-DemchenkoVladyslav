@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 class Program
 {
-    public static void Main(string[]Args)
+    public static void Main(string[] Args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Detail d1 = new Detail();
@@ -56,11 +56,13 @@ class Program
         Console.WriteLine($"\nVehicles with capacity >= {requiredCapacity}:");
         foreach (Trans vehicle in vehicles)
         {
-            if (vehicle.GetCapacity() >= requiredCapacity)
+            if (vehicle.CompareTo(requiredCapacity) == 1)
             {
                 vehicle.DisplayInfo();
             }
         }
 
+        Console.WriteLine(vehicles[0].Equals(vehicles[1]));
+        Console.WriteLine(vehicles[0].Equals(vehicles[0]));
     }
 }

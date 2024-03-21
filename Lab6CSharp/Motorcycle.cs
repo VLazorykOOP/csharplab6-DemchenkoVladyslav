@@ -35,17 +35,21 @@ namespace Lab6CSharp
 
         public bool Equals(Trans? other)
         {
-            if (other == null) return false;
             var o = other as Motorcycle;
+            if (o == null) return false;
             if (o.Brand == this.Brand && o.Number == this.Number && o.Speed == this.Speed && o.Capacity == this.Capacity && hasSidecar == o.hasSidecar)
                 return true;
             return false;
         }
         public int CompareTo(object? obj)
         {
-            var m = obj as Motorcycle;
+            var m = obj as Trans;
             if (m == null) throw new ArgumentException();
             return (m.Speed == this.Speed) ? 0 : (m.Speed < this.Speed) ? 1 : -1;
+        }
+        public int CompareTo(int a)
+        {
+            return (a == this.Capacity) ? 0 : (a < this.Capacity) ? 1 : -1;
         }
     }
 }
