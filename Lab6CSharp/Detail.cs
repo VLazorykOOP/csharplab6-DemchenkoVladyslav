@@ -19,7 +19,7 @@ namespace Lab6CSharp
 
         public int CompareTo(object? obj)
         {
-            Detail detail = obj as Detail;
+            Detail? detail = obj as Detail;
             if (detail != null)
             {
                 return detail.Weight == this.Weight ? 0 : detail.Weight < this.Weight ? 1 : -1;

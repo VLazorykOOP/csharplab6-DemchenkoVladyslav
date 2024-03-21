@@ -1,4 +1,5 @@
 ﻿using Lab6CSharp;
+using System.Diagnostics;
 
 class Program
 {
@@ -35,7 +36,31 @@ class Program
 
 
         Console.WriteLine(d2.CompareTo(d1));
-        Console.WriteLine(d2.CompareTo(d3));
-        Console.WriteLine(d1.CompareTo(d2));
+        Console.WriteLine(d2.CompareTo(p3));
+        Console.WriteLine(m1.CompareTo(d2));
+        Trans[] vehicles = new Trans[]
+     {
+            new Car("Toyota", "ABC123", 120, 500),
+            new Motorcycle("Honda", "DEF456", 100, 0, true),
+            new Truck("Volvo", "GHI789", 80, 2000, true),
+            new Car("BMW", "JKL012", 150, 600),
+            new Truck("MAN", "MNO345", 70, 3000, false)
+     };
+
+        foreach (Trans vehicle in vehicles)
+        {
+            vehicle.DisplayInfo();
+        }
+
+        int requiredCapacity = 1000;
+        Console.WriteLine($"\nVehicles with capacity >= {requiredCapacity}:");
+        foreach (Trans vehicle in vehicles)
+        {
+            if (vehicle.GetCapacity() >= requiredCapacity)
+            {
+                vehicle.DisplayInfo();
+            }
+        }
+
     }
 }
