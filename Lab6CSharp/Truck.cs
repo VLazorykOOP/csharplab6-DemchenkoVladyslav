@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace Lab6CSharp
         public int Speed { get; set; }
         public int Capacity { get; set; }
 
+
         public virtual void DisplayInfo()
         {
             Console.WriteLine($"Truck - Brand: {Brand}, Number: {Number}, Speed: {Speed}, Capacity: {Capacity}");
@@ -35,7 +37,7 @@ namespace Lab6CSharp
         {
             var o = other as Truck;
             if (o == null) return false;
-            if (o.Brand == this.Brand && o.Number == this.Number && o.Speed == this.Speed && o.Capacity == this.Capacity && hasTrailer== o.hasTrailer)
+            if (o.Brand == this.Brand && o.Number == this.Number && o.Speed == this.Speed && o.Capacity == this.Capacity && hasTrailer == o.hasTrailer)
                 return true;
             return false;
         }

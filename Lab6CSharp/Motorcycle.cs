@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab6CSharp
 {
-    class Motorcycle : Trans
+    class Motorcycle : Trans, IEnumerator<object>
     {
         private bool hasSidecar;
+        int position = 0;
         public Motorcycle(string brand, string number, int speed, int capacity, bool hasSidecar)
         {
             this.Brand = brand;
@@ -26,7 +29,6 @@ namespace Lab6CSharp
         public string Number { get; set; }
         public int Speed { get; set; }
         public int Capacity { get; set; }
-
 
         public virtual void DisplayInfo()
         {
@@ -50,6 +52,63 @@ namespace Lab6CSharp
         public int CompareTo(int a)
         {
             return (a == this.Capacity) ? 0 : (a < this.Capacity) ? 1 : -1;
+        }
+        public object this[int i]
+        {
+            get
+            {
+                switch (i)
+                {
+                    case 0: return Brand;
+                    case 1: return Number;
+                    case 2: return Speed;
+
+                    case 3: return Capacity;
+                    case 4: return hasSidecar;
+                }
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+        public IEnumerator<object> GetEnumerator()
+        {
+            yield return Brand;
+            yield return Number;
+            yield return Speed;
+            yield return Capacity;
+            yield return hasSidecar;
+        }
+        public object Current
+        {
+            get
+            {
+                try
+                {
+                    return this[position];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
+
+        object IEnumerator.Current => Current;
+
+        public bool MoveNext()
+        {
+            position++;
+            return position < 5;
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

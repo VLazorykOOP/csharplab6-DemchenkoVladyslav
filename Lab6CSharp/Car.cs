@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Lab6CSharp
         public string Number { get; set; }
         public int Speed { get; set; }
         public int Capacity { get; set; }
+
 
         public virtual void DisplayInfo()
         {
